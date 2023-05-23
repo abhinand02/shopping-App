@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
               children: [
                 const Text('Cart is Empty', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 TextButton(
-                  child: const Text('Order Items'),
+                  child: const Text('Start Shopping'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
