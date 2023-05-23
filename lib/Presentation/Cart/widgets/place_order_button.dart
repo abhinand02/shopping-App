@@ -12,6 +12,8 @@ class PlaceOrderButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
+        final amount = (state.itemcount.reduce((a, b) => a+b) * 1287.05).toStringAsFixed(2);
+          final gst = (double.parse(amount) * .1).round();
         if (state.itemcount.reduce((a, b) => a+b)== 0) {
           return Container(height: .1,);
         }
@@ -29,9 +31,8 @@ class PlaceOrderButton extends StatelessWidget {
                       shape: const StadiumBorder(),
                       backgroundColor: blueColor,
                       padding: const EdgeInsets.symmetric(vertical: 15)),
-                  child: const Text(
-                    'Place Order ₹412',
-                    style: TextStyle(
+                  child: Text('Place Order ₹${(double.parse(amount) + gst - 100 - 40).toString()}',
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                   ),
